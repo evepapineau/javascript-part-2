@@ -25,21 +25,23 @@ var myArray = ['hello', 'cat', 'dog', 'dictionnary'];
 //will sort your array by the longest name. Then, run some code that will sort 
 //your array by e-mail address in alphabetical order.
 
-function Person (name, email) {
+function Person (name, email, num) {
     this.name = name;
     this.email = email;
+    this.num = num;
 }
 
 var info = new Array ();
-info[0] = new Person ('Eve', 'eve.papineau@hotmail.fr');
-info[1] = new Person ('Adam', 'blabla@gmail.com');
-info[2] = new Person ('Gabrielle', 'Salut@yahoo.fr')
+info[0] = new Person ('Eve', 'eve.papineau@hotmail.fr', 3);
+info[1] = new Person ('Adam', 'blabla@gmail.com', 4);
+info[2] = new Person ('Gabrielle', 'Salut@yahoo.fr', 5)
 
-/*function longuest(name1, name2) {
+
+function longuest(name1, name2) {
     if (name1.name.length > name2.name.length) {
         return 1;
     }
-    else if (name1.name < name2.name) {
+    else if (name1.name.length < name2.name.length) {
         return -1;
     }
     else {
@@ -47,7 +49,7 @@ info[2] = new Person ('Gabrielle', 'Salut@yahoo.fr')
     }
 }
 
-console.log(info.sort(longuest));*/
+//console.log(info.sort(longuest));
 
 function longuest(email1, email2) {
     if (email1.email.toLowerCase() > email2.email.toLowerCase()) {
@@ -61,11 +63,69 @@ function longuest(email1, email2) {
     }
 }
 
-console.log(info.sort(longuest));
+//console.log(info.sort(longuest));
 
 //Create a function that can be used with Array.prototype.map. 
 //This function should take a number and return its square. 
 //Then, use this function with map on an array of numbers to check the result.
 
+function square(num) {
+    return num * num
+};
 
+var myArray = [9,3,2,7];
+var myArray2 = myArray.map(square);
 
+//console.log(myArray2);
+
+//Create a function that can be used with Array.prototype.map. 
+//This function should be able to take an object and square its “num” property. 
+//Then, use this function with map on an array of objects each containming a “num” property.
+
+function square2(info) {
+    return info.num * info.num;
+}
+
+var square3 = info.map(square2);
+
+//console.log(square3);
+
+//In a previous workshop, you had to create a function that took two numbers and 
+//an operation (add, sub, mult, …) and returned the result of the operation on 
+//the two numbers. Here we are going to do the same but at a higher order. 
+//Create a function called operationMaker that takes only a string called operation as argument. 
+//This string could be “add”, “subtract”, “mult” or “div”. Your function will return 
+//a function that will take two numbers and return the result of running operation on these numbers. 
+//The end result should let me do something like this:
+
+function operationMaker (operation) {
+    var outputResult;
+    switch(operation) {
+        case 'add':
+            outputResult = function (number1, number2) {
+                return number1 + number2;
+            }
+        break;
+        case 'substract':
+            outputResult = function (number1, number2) {
+                return number1 - number2;
+            }
+        break;
+        case 'mult':
+            outputResult = function (number1, number2) {
+                return number1 * number2;
+            }
+        break;
+        case 'div':
+            outputResult = function (number1, number2) {
+                return number1 / number2;
+            }
+        break;
+    }
+    return outputResult; 
+}
+
+var adder = operationMaker('add');
+console.log(adder);
+var sum = adder(5, 10);
+console.log(sum);
