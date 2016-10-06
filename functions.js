@@ -18,7 +18,7 @@ function longuestString(string1, string2) {
 
 var myArray = ['hello', 'cat', 'dog', 'dictionnary'];
 
-//console.log(myArray.sort(longuestString));
+console.log(myArray.sort(longuestString));
 
 //Create an array of objects (don’t need to use new here, just regular object literals). 
 //These objects will contain a name and email property. Then, run some code that 
@@ -49,7 +49,7 @@ function longuest(name1, name2) {
     }
 }
 
-//console.log(info.sort(longuest));
+console.log(info.sort(longuest));
 
 function longuest(email1, email2) {
     if (email1.email.toLowerCase() > email2.email.toLowerCase()) {
@@ -63,7 +63,7 @@ function longuest(email1, email2) {
     }
 }
 
-//console.log(info.sort(longuest));
+console.log(info.sort(longuest));
 
 //Create a function that can be used with Array.prototype.map. 
 //This function should take a number and return its square. 
@@ -76,7 +76,7 @@ function square(num) {
 var myArray = [9,3,2,7];
 var myArray2 = myArray.map(square);
 
-//console.log(myArray2);
+console.log(myArray2);
 
 //Create a function that can be used with Array.prototype.map. 
 //This function should be able to take an object and square its “num” property. 
@@ -88,7 +88,7 @@ function square2(info) {
 
 var square3 = info.map(square2);
 
-//console.log(square3);
+console.log(square3);
 
 //In a previous workshop, you had to create a function that took two numbers and 
 //an operation (add, sub, mult, …) and returned the result of the operation on 
@@ -129,3 +129,4 @@ var adder = operationMaker('add');
 console.log(adder);
 var sum = adder(5, 10);
 console.log(sum);
+
